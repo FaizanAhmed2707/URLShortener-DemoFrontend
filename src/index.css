@@ -1,0 +1,55 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap');
+/* --- TAILWIND IMPORTS (MUST precede all other styles/declarations) --- */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+/* ---------------------------------------------------------------------- */
+
+
+/* --- Theme Color Variables: Light Mode (Default) --- */
+/* These variables are referenced by your custom Tailwind color classes (e.g., text-app-text) */
+:root {
+  /* Application Background & Text */
+  --color-app-bg: #ffffff; /* White background */
+  --color-app-text: #1f2937; /* Dark text */
+
+  /* Component/Card Background & Text */
+  --color-comp-bg: #f9fafb; /* Off-white component background */
+  --color-comp-text: #111827; 
+
+  /* Primary Button/Brand Color */
+  --color-btnColor: #3b82f6; /* Blue-500 */
+}
+
+/* --- Dark Mode Overrides (.dark class on <html>) --- */
+.dark {
+  /* Overwrite the base variables for dark mode */
+  --color-app-bg: #0f172a; /* Slate-900 background */
+  --color-app-text: #f3f4f6; /* Gray-100 text */
+
+  --color-comp-bg: #1e293b; /* Slate-800 component background */
+  --color-comp-text: #e5e7eb;
+
+  --color-btnColor: #60a5fa; /* Lighter Blue-400 */
+}
+
+/* --- Global Theme Application & Visuals --- */
+body {
+  /* Apply base colors using theme() helper and ensure a smooth transition */
+  background-color: theme('colors.app-bg');
+  color: theme('colors.app-text');
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+/* Optional: Cool Visual Effect for Dark Mode (Requires dark-bg-gradient in tailwind.config.js) */
+.dark body {
+    background-image: theme('backgroundImage.dark-bg-gradient');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#root {
+  min-height: 100vh;
+}
