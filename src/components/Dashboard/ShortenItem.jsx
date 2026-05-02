@@ -20,10 +20,10 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate, refetchLi
     const [loader, setLoader] = useState(false);
     const [analyticsData, setAnalyticsData] = useState(null); // Changed to null for cleaner loading logic
 
-     // --- ESSENTIAL FIX: Cleaned URL Construction ---
-    // Ensure the base URL is reliably pulled from the VITE environment
-    const baseFrontEndUrl = import.meta.env.VITE_REACT_FRONT_END_URL || 'http://localhost:5173';
-    const baseDomain = baseFrontEndUrl.replace(/^https?:\/\//, '').replace(/\/+$/, '');
+    // --- ESSENTIAL FIX: Cleaned URL Construction ---
+    // Dynamically grab the exact domain the user is currently visiting
+    const baseFrontEndUrl = window.location.origin;
+    const baseDomain = window.location.host;
     const fullShortUrl = `${baseFrontEndUrl}/s/${shortUrl}`;
 
     // Reset copy state
