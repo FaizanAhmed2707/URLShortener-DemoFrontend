@@ -26,7 +26,8 @@ const LandingPage = () => {
   const [loading, setLoading] = useState(false); 
   
   // CRITICAL FIX: Base URL is the FE address (e.g., localhost:5173)
-  const baseFrontEndUrl = import.meta.env.VITE_PUBLIC_FRONT_END_URL; 
+  // Dynamically pull the correct domain from the browser
+  const baseFrontEndUrl = window.location.origin;
 
   // --- API CALL HANDLER ---
   const handleShorten = async (e) => {
