@@ -43,8 +43,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
 
             const { data: res } = await api.post("/api/urls/shorten", data, { headers });
 
-            const shortenUrl = `${import.meta.env.VITE_REACT_FRONT_END_URL}/s/${res.shortUrl}`;
-            
+            const shortenUrl = `${window.location.origin}/s/${res.shortUrl}`;            
             // 1. Invalidate cache to trigger real-time UI refresh
             // We assume the Dashboard fetches its data using a query key like 'userUrls'
             queryClient.invalidateQueries({ queryKey: ['userUrls'] });
